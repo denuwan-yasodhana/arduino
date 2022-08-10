@@ -1,0 +1,27 @@
+// Analog voltage use for lighting LED bulb (LED need Digital Voltage)
+// Analoge voltage can divide into 1023 parts
+// Digital Voltage(5v) = Analog Voltage(5/1023)v
+
+int brightness = 0;
+int fadeAmount = 5;
+
+void setup() 
+{
+  pinMode(9, OUTPUT);
+}
+
+void loop() 
+{
+
+  analogWrite(9, brightness);
+
+  brightness = brightness + fadeAmount;
+
+  if(brightness < 0 || brightness >= 255)
+  {
+      fadeAmount = -fadeAmount;
+  }
+
+  delay(30);
+
+}
